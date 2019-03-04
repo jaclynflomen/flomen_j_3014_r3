@@ -1,5 +1,6 @@
 <?php 
 	require_once('scripts/config.php');
+	// require_once('scripts/connect.php');
 	// confirm_logged_in();
 
 	if(isset($_POST['submit'])){

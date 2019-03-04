@@ -37,6 +37,16 @@ function login($username, $password, $ip){
 			$id = $found_user['user_id'];
 			$_SESSION['user_id'] = $id;
 			$_SESSION['user_name'] = $found_user['user_name'];
+			$_SESSION['user_login'] = $loginNo; 
+
+			$loginNo = $found_user['user_login']; 
+			//Adding the new stuff to be found by the db
+
+			if($loginNo == 'new'){ //if they are a new member, go edit!
+                redirect_to("./admin_edituser.php");
+              }else if ($loginNo == 'old');{
+                redirect_to("./index.php"); //if not, welcome back
+              }
 
 			//Update user login IP
 			$update_ip_query = 'UPDATE tbl_user SET user_ip=:ip WHERE user_id=:id';
@@ -46,17 +56,19 @@ function login($username, $password, $ip){
 					':ip'=>$ip,
 					':id'=>$id
 				)
-			);
+			);	
 		}
+		
 
 		if(empty($id)){
 			$message = 'Login Failed!';
 			return $message;
+		} redirect_to('index.php');
+			
+		}else{
+			$message = 'Login Failed!';
+			return $message;
 		}
 
-		redirect_to('index.php');
-	}else{
-		$message = 'Login Failed!';
-		return $message;
-	}
+
 }

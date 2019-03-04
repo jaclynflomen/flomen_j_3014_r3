@@ -43,13 +43,13 @@ if(isset($_POST['submit'])){
 		$message = $result;
     }
 
-    //setting time limit after user is created
-    if((time() - $_SESSION['user_date']) > 2){
-        redirect_to('admin_login.php');
-    }else{
-        $_SESSION['user_date'] = time(); 
-        redirect_to('index.php');
-    }
+    // //setting time limit after user is created
+    // if((time() - $_SESSION['user_date']) > 2){
+    //     redirect_to('admin_login.php');
+    // }else{
+    //     $_SESSION['user_date'] = time(); 
+    //     redirect_to('index.php');
+    // }
 }
 ?>
 
