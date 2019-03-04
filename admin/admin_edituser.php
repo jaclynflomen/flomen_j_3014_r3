@@ -43,10 +43,11 @@ if(isset($_POST['submit'])){
 		$message = $result;
     }
 
-    if((time() - $_SESSION['last_login_timestamp']) > 60){
+    //setting time limit after user is created
+    if((time() - $_SESSION['user_date']) > 2){
         redirect_to('admin_login.php');
     }else{
-        $_SESSION['last_login_timestamp'] = time(); 
+        $_SESSION['user_date'] = time(); 
         redirect_to('index.php');
     }
 }
